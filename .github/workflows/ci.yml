@@ -27,7 +27,7 @@ jobs:
         run: ruff check services/api
 
       - name: Type check with mypy
-        run: mypy services/api --no-error-summary
+        run: mypy --pythonpath services/api services/api/app --no-error-summary
 
       - name: Run tests
         run: pytest services/api -q
