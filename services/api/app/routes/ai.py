@@ -2,11 +2,12 @@ from fastapi import APIRouter
 from ..schemas.ai import ExplainCodeRequest, ExplainCodeResponse
 from ..core.ai_client import explain_code_with_ai
 
-router = APIRouter()
+router = APIRouter(prefix="/api/v1/ai", tags=["ai"])
 
 
-@router.post("/api/v1/ai/explain", response_model=ExplainCodeResponse)
-def explain_code(payload: ExplainCodeRequest):
+@router.post("/explain", response_model=ExplainCodeResponse)
+async def explain_code(payload: ExplainCodeRequest):
+    """Explain code using AI orchestration."""
     result = explain_code_with_ai(
         code=payload.code,
         language=payload.language,
