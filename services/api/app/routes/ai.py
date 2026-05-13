@@ -1,6 +1,6 @@
 from fastapi import APIRouter
-from app.schemas.ai import ExplainCodeRequest, ExplainCodeResponse
-from app.core.ai_client import explain_code_with_ai
+from ..schemas.ai import ExplainCodeRequest, ExplainCodeResponse
+from ..core.ai_client import explain_code_with_ai
 
 router = APIRouter()
 
