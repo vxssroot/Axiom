@@ -1,6 +1,7 @@
 from fastapi import APIRouter, HTTPException, Request
-from ..schemas.ai import AIRequest, AIResponse, ErrorResponse
+from ..schemas.ai import AIRequest, AIResponse
 from ..orchestrator.workflows import WORKFLOWS
+from ..services.vector_store import VECTOR_STORE
 import uuid
 
 router = APIRouter(prefix='/ai', tags=['AI'])
@@ -8,35 +9,33 @@ router = APIRouter(prefix='/ai', tags=['AI'])
 @router.post('/chat', response_model=AIResponse)
 async def chat(req: AIRequest, request: Request):
     rid = str(uuid.uuid4())[:8]
-    try:
-        result = await WORKFLOWS['chat']({'prompt': req.prompt})
-        return AIResponse(content=result['content'], provider=result['provider'], fallback=result['fallback'], request_id=rid)
-    except Exception as e:
-        raise HTTPException(500, detail=ErrorResponse(error='chat_failed', detail=str(e)[:100], request_id=rid).dict())
+    context = ''
+    if hasattr(req, 'repo_id') and req.repo_id:
+        results = VECTOR_STORE.search(req.repo_id, req.prompt or req.context or '', 3)
+        context = '\n'.join([r.get('preview', '') for r in results])
+    prompt = (req.prompt or '') + (f'\nContext:\n{context}' if context else '')
+    result = await WORKFLOWS['chat']({'prompt': prompt})
+    return AIResponse(content=result['content'], provider=result['provider'], fallback=result['fallback'], request_id=rid)
 
 @router.post('/explain', response_model=AIResponse)
 async def explain(req: AIRequest, request: Request):
     rid = str(uuid.uuid4())[:8]
-    try:
-        result = await WORKFLOWS['explain']({'prompt': req.prompt})
-        return AIResponse(content=result['content'], provider=result['provider'], fallback=result['fallback'], request_id=rid)
-    except Exception as e:
-        raise HTTPException(500, detail=ErrorResponse(error='explain_failed', detail=str(e)[:100], request_id=rid).dict())
+    context = ''
+    if hasattr(req, 'repo_id') and req.repo_id:
+        results = VECTOR_STORE.search(req.repo_id, req.prompt or '', 3)
+        context = '\n'.join([r.get('preview', '') for r in results])
+    prompt = (req.prompt or '') + (f'\nContext:\n{context}' if context else '')
+    result = await WORKFLOWS['explain']({'prompt': prompt})
+    return AIResponse(content=result['content'], provider=result['provider'], fallback=result['fallback'], request_id=rid)
 
 @router.post('/review', response_model=AIResponse)
 async def review(req: AIRequest, request: Request):
     rid = str(uuid.uuid4())[:8]
-    try:
-        result = await WORKFLOWS['review']({'prompt': req.prompt})
-        return AIResponse(content=result['content'], provider=result['provider'], fallback=result['fallback'], request_id=rid)
-    except Exception as e:
-        raise HTTPException(500, detail=ErrorResponse(error='review_failed', detail=str(e)[:100], request_id=rid).dict())
+    result = await WORKFLOWS['review']({'prompt': req.prompt})
+    return AIResponse(content=result['content'], provider=result['provider'], fallback=result['fallback'], request_id=rid)
 
 @router.post('/refactor', response_model=AIResponse)
 async def refactor(req: AIRequest, request: Request):
     rid = str(uuid.uuid4())[:8]
-    try:
-        result = await WORKFLOWS['refactor']({'prompt': req.prompt})
-        return AIResponse(content=result['content'], provider=result['provider'], fallback=result['fallback'], request_id=rid)
-    except Exception as e:
-        raise HTTPException(500, detail=ErrorResponse(error='refactor_failed', detail=str(e)[:100], request_id=rid).dict())
+    result = await WORKFLOWS['refactor']({'prompt': req.prompt})
+    return AIResponse(content=result['content'], provider=result['provider'], fallback=result['fallback'], request_id=rid)
