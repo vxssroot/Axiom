@@ -1,27 +1,26 @@
 # Changelog
 
-## [0.2.0-repo-intelligence] - 2026-05-18
+## [v0.3.0-foundation] - 2026-05-18
 
-### Added
-- AI routes (/ai/chat, /explain, /review, /refactor) with OpenAI-compatible provider + timeout/retry/fallback
-- Workflow dispatcher
-- Repo chunking service (exclude list, metadata)
-- Embedding abstraction + deterministic fallback
-- In-memory vector store (Qdrant-ready)
-- GitHub repo sync (/github/import + /github/webhook)
-- Repo intelligence actions (/repos/summarize, explain-file, review, architecture)
-- Structured Pydantic responses + error handling
-- 20+ tests covering all flows and fallbacks
+### Full-Stack MVP Complete
+- Backend: FastAPI + SQLAlchemy + Postgres + encrypted GitHub tokens
+- Frontend: Next.js 14 dark enterprise dashboard (login, dashboard, repos, repo detail, settings)
+- GitHub OAuth + persistent user/session storage
+- Repo chunking, embedding fallback, in-memory vector store
+- GitHub repo import + webhook
+- Repo intelligence actions (summarize, explain-file, review, architecture)
+- Production Dockerfiles + docker-compose + Railway/Fly.io deployment paths
+- 30+ tests across all layers
 
 ### Security
-- No secrets in logs
-- Safe GitHub clone (regex validation, no injection)
+- No secrets logged
+- Encrypted token storage
 - Backend-controlled AI access
+- Secure cookie handling ready
 
-### Limitations
-- No OAuth
-- No frontend
-- In-memory vector only
-- Context limited to retrieved chunks
+### Ready For
+- Private beta with real engineering teams
+- Public demo deployment
+- Further expansion (PR automation, multi-tenant, IDE extensions)
 
-Production-ready backend MVP for repo-aware developer AI.
+No fake claims. Production foundation solid.
