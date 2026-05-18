@@ -1,17 +1,17 @@
-# Axiom (v0.7 - Persistent Storage)
+# Axiom (v0.8 - Frontend Dashboard)
 
-## New
-- SQLAlchemy + SQLite/Postgres support
-- Users, GitHub tokens (encrypted), Repositories, Audit logs
-- OAuth now persists user + encrypted token
-- Repo import persists metadata + audit
-- /auth/me reads from DB
+## Frontend (apps/web)
+Next.js 14 + TypeScript + Tailwind
 
-## Env
-DATABASE_URL=sqlite:///./axiom.db (or postgres://...)
-ENCRYPTION_SECRET=32-byte-key
+Dark, minimal, enterprise-grade UI (Linear × Vercel × Cursor).
 
-## Test
-pytest services/api/tests/test_persistent.py
+## Run
+cd apps/web && npm install && npm run dev
 
-SQLite fallback for dev/tests. Production: use Postgres + Alembic.
+## Pages
+/login | /dashboard | /repos | /repo/[id] | /settings
+
+## Backend
+Connects to existing FastAPI routes only. No fake logic.
+
+Desktop-first. Mobile responsive.
