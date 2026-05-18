@@ -1,16 +1,14 @@
-# Axiom (v0.4 - GitHub Repo Sync)
+# Axiom (v0.5 - Repo Intelligence Actions)
 
-## New Endpoints
-POST /github/import (clone + chunk + index)
-POST /github/webhook (push/PR events logged)
+## New Endpoints (POST /repos)
+- /summarize (high-level repo overview)
+- /explain-file (target file explanation)
+- /review (structured code review)
+- /architecture (modules/layers/dependencies/risks)
 
-After import, /repos/search and /ai/* work with the repo_id.
-
-## Env
-GITHUB_TOKEN=ghp_... (for private repos)
-GITHUB_CLONE_BASE_DIR=/tmp/axiom-repos
+All use indexed context from vector store + AI workflow.
 
 ## Test
-pytest services/api/tests/test_github.py
+pytest services/api/tests/test_intelligence.py
 
-Safe clone, no command injection, secrets not logged.
+Requires prior /github/import or /repos/index for real context.
