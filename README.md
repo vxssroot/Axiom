@@ -1,16 +1,16 @@
-# Axiom (v0.3 - Vector Retrieval)
+# Axiom (v0.4 - GitHub Repo Sync)
 
 ## New Endpoints
-POST /repos/index  (chunk + embed + upsert)
-POST /repos/search (semantic via fallback)
+POST /github/import (clone + chunk + index)
+POST /github/webhook (push/PR events logged)
 
-/ai/chat and /ai/explain now accept optional repo_id for context.
+After import, /repos/search and /ai/* work with the repo_id.
 
 ## Env
-EMBEDDING_API_KEY=... (optional)
-QDRANT_URL=... (future)
+GITHUB_TOKEN=ghp_... (for private repos)
+GITHUB_CLONE_BASE_DIR=/tmp/axiom-repos
 
 ## Test
-pytest services/api/tests/test_vector.py
+pytest services/api/tests/test_github.py
 
-No real Qdrant yet - in-memory fallback only.
+Safe clone, no command injection, secrets not logged.
