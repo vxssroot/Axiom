@@ -1,18 +1,16 @@
-# Axiom (v0.2 - Core AI Orchestrator)
+# Axiom (v0.3 - Vector Retrieval)
 
-## New AI Routes (POST)
-- /ai/chat
-- /ai/explain
-- /ai/review
-- /ai/refactor
+## New Endpoints
+POST /repos/index  (chunk + embed + upsert)
+POST /repos/search (semantic via fallback)
 
-All use OpenAI-compatible provider with timeout/retry/fallback.
-
-## Run
-cd services/api && uvicorn main:app --reload
-
-## Test
-pytest services/api/tests/test_ai.py
+/ai/chat and /ai/explain now accept optional repo_id for context.
 
 ## Env
-AI_API_KEY=sk-... (optional for real calls)
+EMBEDDING_API_KEY=... (optional)
+QDRANT_URL=... (future)
+
+## Test
+pytest services/api/tests/test_vector.py
+
+No real Qdrant yet - in-memory fallback only.
