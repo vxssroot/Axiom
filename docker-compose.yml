@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+  backend:
+    build: {context: ., dockerfile: Dockerfile.backend}
+    ports: ["8000:8000"]
+    environment:
+      DATABASE_URL: postgresql://user:pass@postgres:5432/axiom
+      NEXT_PUBLIC_API_URL: http://localhost:8000
+    depends_on: [postgres]
+  frontend:
+    build: {context: ., dockerfile: Dockerfile.frontend}
+    ports: ["3000:3000"]
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:8000
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: axiom
+    ports: ["5432:5432"]
+    volumes: [pgdata:/var/lib/postgresql/data]
+volumes:
+  pgdata:
