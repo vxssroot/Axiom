@@ -1,17 +1,21 @@
-# Axiom (v0.8 - Frontend Dashboard)
+# Axiom (v0.9 - Production Deploy)
 
-## Frontend (apps/web)
-Next.js 14 + TypeScript + Tailwind
+## Docker Production
+```bash
+docker compose up --build
+```
 
-Dark, minimal, enterprise-grade UI (Linear × Vercel × Cursor).
+## Deploy
+- Railway: Backend (Dockerfile.backend) + Frontend (Dockerfile.frontend) + Postgres
+- Fly.io: fly launch --dockerfile Dockerfile.backend
 
-## Run
-cd apps/web && npm install && npm run dev
+## Env
+DATABASE_URL (Postgres)
+NEXT_PUBLIC_API_URL
+GITHUB_CLIENT_ID/SECRET
+JWT_SECRET/ENCRYPTION_SECRET
 
-## Pages
-/login | /dashboard | /repos | /repo/[id] | /settings
+## Health
+curl /health
 
-## Backend
-Connects to existing FastAPI routes only. No fake logic.
-
-Desktop-first. Mobile responsive.
+SQLite dev only. Secure cookies in prod.
