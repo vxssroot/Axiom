@@ -1,19 +1,17 @@
-# Axiom (v0.6 - Full GitHub OAuth)
+# Axiom (v0.7 - Persistent Storage)
 
-## New Auth Endpoints
-GET /auth/github/login | GET /auth/github/callback | GET /auth/me | POST /auth/logout
+## New
+- SQLAlchemy + SQLite/Postgres support
+- Users, GitHub tokens (encrypted), Repositories, Audit logs
+- OAuth now persists user + encrypted token
+- Repo import persists metadata + audit
+- /auth/me reads from DB
 
-## GitHub Features
-GET /github/repos (authenticated list)
-POST /github/import (now supports authenticated private repos via stored token)
-
-## Security
-- JWT session cookies (HttpOnly)
-- No token logging
-- Encrypted storage pattern ready (ENCRYPTION_SECRET)
-- Backend-controlled OAuth
+## Env
+DATABASE_URL=sqlite:///./axiom.db (or postgres://...)
+ENCRYPTION_SECRET=32-byte-key
 
 ## Test
-pytest services/api/tests/test_oauth.py
+pytest services/api/tests/test_persistent.py
 
-Public repo import remains fully supported without auth.
+SQLite fallback for dev/tests. Production: use Postgres + Alembic.
