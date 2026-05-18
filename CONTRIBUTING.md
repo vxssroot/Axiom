@@ -1,28 +1,36 @@
 # Contributing to Axiom
 
-Thanks for contributing to Axiom.
+## Local Setup
+```bash
+# Backend
+git clone https://github.com/er4700345-coder/Axiom.git
+cd Axiom/services/api
+pip install -r requirements.txt
+uvicorn main:app --reload
 
-Axiom is an AI Developer Assistant built for serious engineering workflows. We are building with clean architecture, proper collaboration, and long-term product quality in mind.
+# Frontend
+cd ../apps/web
+npm install
+npm run dev
 
-## Contribution Rules
-
-1. Do not push directly to `main`.
-2. Create a feature branch before working.
-3. Pick or request an issue before starting.
-4. Open a pull request when your work is ready.
-5. Keep commits clear and focused.
-6. Do not commit secrets or API keys.
-7. Discuss major architecture changes before implementing.
-8. Keep frontend, backend, and AI workflow responsibilities separate.
+# Full stack
+docker compose up --build
+```
 
 ## Branch Naming
+- feature/xxx (new capability)
+- fix/xxx (bug fix)
+- docs/xxx (documentation)
 
-Use clear branch names:
+## PR Expectations
+- Small, focused changes
+- Tests for new functionality
+- Clear description of what/why
+- No fake data or logic
 
-```txt
-feature/web-dashboard
-feature/auth-api
-feature/ai-explain-workflow
-feature/repo-indexing
-fix/login-error
-docs/update-architecture
+## Testing
+- Backend: pytest services/api/tests/
+- Frontend: npm test (when added)
+- Full stack: docker compose up --build + manual verification
+
+Thank you for contributing to serious engineering AI.

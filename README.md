@@ -1,21 +1,44 @@
-# Axiom (v0.9 - Production Deploy)
+# Axiom — Founder-Grade Repo Intelligence
 
-## Docker Production
+**Production-ready full-stack AI for serious engineering workflows.**
+
+Axiom gives engineers and teams a secure, backend-controlled AI layer that understands entire repositories — not just snippets.
+
+## Architecture
+- FastAPI backend (Python) with SQLAlchemy + Postgres
+- Next.js 14 frontend (dark, minimal, enterprise UI)
+- GitHub OAuth + encrypted token storage
+- Repo chunking + embedding + vector retrieval (in-memory + Qdrant-ready)
+- AI orchestration (OpenAI-compatible + safe fallback)
+- Repo intelligence actions (summarize, explain-file, review, architecture)
+
+## Real Features (v0.3.0-foundation)
+- GitHub OAuth login + private repo access
+- One-click repo import + indexing
+- Semantic search inside repos
+- AI-powered code review, architecture overview, file explanation
+- Full audit logging + persistent sessions
+- Production Docker + Railway/Fly.io deployment ready
+
+## Quickstart
 ```bash
 docker compose up --build
+# Backend: http://localhost:8000
+# Frontend: http://localhost:3000
 ```
 
-## Deploy
-- Railway: Backend (Dockerfile.backend) + Frontend (Dockerfile.frontend) + Postgres
-- Fly.io: fly launch --dockerfile Dockerfile.backend
+## Deployment
+- Railway: Backend + Frontend + Postgres
+- Fly.io: Backend (Dockerfile.backend)
+- See DEPLOY.md for full checklist
 
-## Env
-DATABASE_URL (Postgres)
-NEXT_PUBLIC_API_URL
-GITHUB_CLIENT_ID/SECRET
-JWT_SECRET/ENCRYPTION_SECRET
+## Screenshots
+Coming soon (clean dark UI with repo intelligence panels)
 
-## Health
-curl /health
+## License
+MIT (see LICENSE)
 
-SQLite dev only. Secure cookies in prod.
+## Contributing
+See CONTRIBUTING.md
+
+Founder-grade. No toy features. No fake claims.
