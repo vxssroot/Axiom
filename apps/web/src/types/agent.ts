@@ -41,7 +41,7 @@ export interface Workflow {
   assignedAgents: string[];
   status: 'draft' | 'running' | 'completed' | 'failed';
   dependencies: Record<string, string[]>;
-  eventHistory: OrchestrationEvent[];
+  eventHistory: any[];
   createdAt: string;
   updatedAt: string;
 }
@@ -59,7 +59,7 @@ export interface ExecutionContext {
   projectId?: string;
   userId: string;
   sessionId: string;
-  memoryReferences: MemoryReference[];
+  memoryReferences: any[];
 }
 
 export interface MemoryReference {
