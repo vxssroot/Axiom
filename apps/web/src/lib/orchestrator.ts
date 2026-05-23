@@ -1,45 +1,42 @@
 import { AGENT_REGISTRY } from './agent-registry';
-import { Agent, Task, OrchestrationEvent, ExecutionContext } from '../types/agent';
+import { Agent, Task } from '../types/agent';
 
 export interface RoutingResult {
   selectedAgent: Agent | null;
-  events: OrchestrationEvent[];
+  events: any[];
   reason: string;
 }
 
 export class Orchestrator {
-  private events: OrchestrationEvent[] = [];
+  private events: any[] = [];
 
   classifyIntent(task: Task): string {
     const keywords = task.description.toLowerCase();
     if (keywords.includes('research') || keywords.includes('analyze')) return 'research';
     if (keywords.includes('bug') || keywords.includes('debug')) return 'debug';
-    if (keywords.includes('security') || keywords.includes('vuln')) return 'security';
-    if (keywords.includes('refactor') || keywords.includes('optimize')) return 'refactor';
-    if (keywords.includes('doc') || keywords.includes('document')) return 'documentation';
+    if (keywords.includes('security')) return 'security';
+    if (keywords.includes('refactor')) return 'refactor';
+    if (keywords.includes('doc')) return 'documentation';
     if (keywords.includes('test')) return 'test';
     if (keywords.includes('deploy')) return 'deployment';
     return 'orchestrator';
   }
 
-  matchAgent(intent: string, capabilities: string[]): Agent | null {
-    return AGENT_REGISTRY.find(agent => 
-      agent.role === intent || 
-      agent.capabilities.some(cap => capabilities.includes(cap))
-    ) || null;
+  matchAgent(intent: string): Agent | null {
+    return AGENT_REGISTRY.find(a => a.name.toLowerCase().includes(intent)) || AGENT_REGISTRY[0];
   }
 
-  routeTask(task: Task, context: ExecutionContext): RoutingResult {
+  routeTask(task: Task): RoutingResult {
     const intent = this.classifyIntent(task);
-    const selectedAgent = this.matchAgent(intent, task.description.toLowerCase().split(' '));
+    const selectedAgent = this.matchAgent(intent);
 
-    const event: OrchestrationEvent = {
+    const event = {
       id: `evt_${Date.now()}`,
       timestamp: new Date().toISOString(),
-      type: selectedAgent ? 'agent_selected' : 'error',
+      type: 'agent_selected',
       taskId: task.id,
-      agentId: selectedAgent?.id,
-      details: selectedAgent ? `Routed to ${selectedAgent.name}` : 'No matching agent found'
+      agentId: selectedAgent.id,
+      details: `Routed to ${selectedAgent.name}`
     };
 
     this.events.push(event);
@@ -47,15 +44,7 @@ export class Orchestrator {
     return {
       selectedAgent,
       events: this.events,
-      reason: selectedAgent ? 'Capability match' : 'No agent matches intent'
-    };
-  }
-
-  getNoAgentFallback(task: Task): RoutingResult {
-    return {
-      selectedAgent: AGENT_REGISTRY[0], // Orchestrator fallback
-      events: [],
-      reason: 'Fallback to Orchestrator'
+      reason: 'Capability match'
     };
   }
 }
