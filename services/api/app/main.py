@@ -31,6 +31,13 @@ async def tenant_middleware(request: Request, call_next):
     request.state.tenant_id = "default"  # Placeholder only
     return await call_next(request)
 
+# Routers
+from .routes import auth, github, intelligence
+
+app.include_router(auth.router, prefix="/auth", tags=["auth"])
+app.include_router(github.router, prefix="/github", tags=["github"])
+app.include_router(intelligence.router, prefix="/intelligence", tags=["intelligence"])
+
 # Health route
 @app.get("/health")
 async def health():
@@ -39,3 +46,4 @@ async def health():
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host=settings.API_HOST, port=settings.API_PORT)
+
