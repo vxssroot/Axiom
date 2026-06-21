@@ -1,7 +1,7 @@
-fastapi
-uvicorn
-python-dotenv
-pydantic-settings
-openai
-PyJWT==2.8.0
-httpx==0.27.0
+sqlalchemy
+psycopg2-binary
+python-jose[cryptography]
+passlib[bcrypt]
+cryptography
+python-multipart
+httpx
