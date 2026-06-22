@@ -70,103 +70,27 @@
 
 ## 🖼️ Screenshots
 
-<!-- 
-  ========================================
-  INSTRUCTIONS FOR ADDING SCREENSHOTS:
-  ========================================
-  1. Save your screenshots in the 'screenshots/' folder
-  2. Replace the placeholder URLs below with your image paths
-  3. Or upload your images to a hosting service and use the URLs
-  
-  Example: 
-  <img src="screenshots/login.png" alt="Login Page" width="800"/>
-  OR
-  <img src="https://your-image-host.com/login.png" alt="Login Page" width="800"/>
--->
-
 <div align="center">
 
-### 🔐 Secure Login
-
-<!-- CLICK TO ADD IMAGE - Replace src with your screenshot path -->
-<a href="https://github.com/vxssroot/Axiom/issues/new?template=add-screenshot.md&title=Add+Login+Screenshot" target="_blank">
-  <img src="https://via.placeholder.com/800x400/1a1a1a/6c63ff?text=+Click+to+Add+Login+Screenshot" alt="Click to add login screenshot" width="800" style="border: 2px dashed #6c63ff; border-radius: 8px;"/>
+### 🔐 Sign Up / Login Page
+<a href="https://imgur.com/kVfmXi1" target="_blank">
+  <img src="https://imgur.com/kVfmXi1.png" alt="Sign Up Page" width="800"/>
 </a>
 <br/>
-<em>📸 Click the image above to add your login screenshot</em>
+*Clean authentication with GitHub OAuth - [View on Imgur](https://imgur.com/kVfmXi1)*
 
 <br /><br />
 
-### 📊 Dashboard Overview
-
-<!-- CLICK TO ADD IMAGE - Replace src with your screenshot path -->
-<a href="https://github.com/vxssroot/Axiom/issues/new?template=add-screenshot.md&title=Add+Dashboard+Screenshot" target="_blank">
-  <img src="https://via.placeholder.com/800x400/1a1a1a/3b82f6?text=+Click+to+Add+Dashboard+Screenshot" alt="Click to add dashboard screenshot" width="800" style="border: 2px dashed #3b82f6; border-radius: 8px;"/>
+### 📊 Welcome / Dashboard Page
+<a href="https://imgur.com/kVfmXi1" target="_blank">
+  <img src="https://imgur.com/kVfmXi1.png" alt="Welcome Dashboard" width="800"/>
 </a>
 <br/>
-<em>📸 Click the image above to add your dashboard screenshot</em>
-
-<br /><br />
-
-### 📁 Repository Intelligence
-
-<!-- CLICK TO ADD IMAGE - Replace src with your screenshot path -->
-<a href="https://github.com/vxssroot/Axiom/issues/new?template=add-screenshot.md&title=Add+Repository+Screenshot" target="_blank">
-  <img src="https://via.placeholder.com/800x400/1a1a1a/a855f7?text=+Click+to+Add+Repository+Screenshot" alt="Click to add repository screenshot" width="800" style="border: 2px dashed #a855f7; border-radius: 8px;"/>
-</a>
-<br/>
-<em>📸 Click the image above to add your repository screenshot</em>
-
-<br /><br />
-
-### 🧪 API Documentation
-
-<!-- CLICK TO ADD IMAGE - Replace src with your screenshot path -->
-<a href="https://github.com/vxssroot/Axiom/issues/new?template=add-screenshot.md&title=Add+API+Docs+Screenshot" target="_blank">
-  <img src="https://via.placeholder.com/800x400/1a1a1a/22c55e?text=+Click+to+Add+API+Docs+Screenshot" alt="Click to add API docs screenshot" width="800" style="border: 2px dashed #22c55e; border-radius: 8px;"/>
-</a>
-<br/>
-<em>📸 Click the image above to add your API documentation screenshot</em>
+*Your repository intelligence dashboard - [View on Imgur](https://imgur.com/kVfmXi1)*
 
 </div>
 
----
-
-## 📸 Quick Screenshot Upload Guide
-
-### Option 1: Add Images to Your Repository
-
-1. **Create a screenshots folder** in your repository:
-   ```bash
-   mkdir screenshots
-   ```
-
-2. **Save your screenshots** with these names:
-   - `screenshots/login.png` - The login page
-   - `screenshots/dashboard.png` - The main dashboard
-   - `screenshots/repos.png` - Repository list view
-   - `screenshots/api-docs.png` - API documentation page
-
-3. **Update the README** by replacing the placeholder URLs:
-   - Find: `https://via.placeholder.com/...`
-   - Replace with: `screenshots/login.png` (or your filename)
-
-### Option 2: Upload to Image Hosting
-
-1. Upload your screenshots to:
-   - [Imgur](https://imgur.com/upload)
-   - [Cloudinary](https://cloudinary.com/)
-   - [GitHub Issues](https://github.com/vxssroot/Axiom/issues)
-
-2. Copy the image URL and replace the placeholder URLs in the README
-
-### Option 3: Use GitHub Issues to Add Images
-
-1. Go to your repository's Issues tab
-2. Create a new issue
-3. Drag and drop your screenshots
-4. Copy the generated image URLs
-5. Update the README
+> **📸 Note:** Both screenshots are hosted on Imgur. The sign-up page and welcome page share the same gallery link since you only provided one URL. If you have separate images, update the links accordingly.
 
 ---
 
