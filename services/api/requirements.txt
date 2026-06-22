@@ -17,4 +17,4 @@ requests
 python-dotenv
 aiofiles
 tiktoken
-numpy 
+numpy
