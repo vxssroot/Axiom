@@ -1,44 +1,278 @@
-# Axiom — Founder-Grade Repo Intelligence
+<p align="center">
+  <img src="https://img.shields.io/badge/version-0.3.0-blue.svg?style=for-the-badge" alt="Version">
+  <img src="https://img.shields.io/badge/license-MIT-green.svg?style=for-the-badge" alt="License">
+  <img src="https://img.shields.io/badge/python-3.9+-blue.svg?style=for-the-badge" alt="Python">
+  <img src="https://img.shields.io/badge/next.js-14.2-black?style=for-the-badge&logo=next.js" alt="Next.js">
+  <img src="https://img.shields.io/badge/fastapi-0.115-green?style=for-the-badge&logo=fastapi" alt="FastAPI">
+  <img src="https://img.shields.io/badge/status-active-success.svg?style=for-the-badge" alt="Status">
+  <img src="https://img.shields.io/badge/contributions-welcome-orange.svg?style=for-the-badge" alt="Contributions">
+  <img src="https://img.shields.io/github/stars/vxssroot/Axiom?style=social" alt="Stars">
+  <img src="https://img.shields.io/github/forks/vxssroot/Axiom?style=social" alt="Forks">
+  <img src="https://img.shields.io/github/last-commit/vxssroot/Axiom" alt="Last Commit">
+</p>
 
-**Production-ready full-stack AI for serious engineering workflows.**
+<br />
 
-Axiom gives engineers and teams a secure, backend-controlled AI layer that understands entire repositories — not just snippets.
+<div align="center">
+  <h1>⚡ Axiom</h1>
+  <p><strong>Founder-Grade Repo Intelligence</strong></p>
+  <p>AI Developer Assistant for serious engineering workflows</p>
+  <br />
+  <p>
+    <a href="#-features"><strong>Explore Features »</strong></a>
+    ·
+    <a href="#-quickstart">Quickstart</a>
+    ·
+    <a href="#-screenshots">Screenshots</a>
+    ·
+    <a href="#-deployment">Deployment</a>
+  </p>
+</div>
 
-## Architecture
-- FastAPI backend (Python) with SQLAlchemy + Postgres
-- Next.js 14 frontend (dark, minimal, enterprise UI)
-- GitHub OAuth + encrypted token storage
-- Repo chunking + embedding + vector retrieval (in-memory + Qdrant-ready)
-- AI orchestration (OpenAI-compatible + safe fallback)
-- Repo intelligence actions (summarize, explain-file, review, architecture)
+<br />
 
-## Real Features (v0.3.0-foundation)
-- GitHub OAuth login + private repo access
-- One-click repo import + indexing
-- Semantic search inside repos
-- AI-powered code review, architecture overview, file explanation
-- Full audit logging + persistent sessions
-- Production Docker + Railway/Fly.io deployment ready
+---
 
-## Quickstart
+## 📋 Table of Contents
+
+- [✨ Features](#-features)
+- [🖼️ Screenshots](#️-screenshots)
+- [🚀 Quickstart](#-quickstart)
+- [🏗️ Architecture](#️-architecture)
+- [📦 Deployment](#-deployment)
+- [🛠️ Tech Stack](#️-tech-stack)
+- [📝 License](#-license)
+- [🤝 Contributing](#-contributing)
+
+---
+
+## ✨ Features
+
+### 🧠 AI-Powered Intelligence
+- **Code Understanding** - Semantic search inside repositories
+- **Smart Review** - AI-powered code review and analysis
+- **Architecture Overview** - Get high-level system architecture insights
+- **File Explanation** - Understand any file with AI assistance
+
+### 🔐 Enterprise-Grade Security
+- **GitHub OAuth** - Secure authentication with encrypted token storage
+- **Private Repo Access** - Full support for private repositories
+- **Audit Logging** - Complete activity tracking
+- **Session Management** - Persistent, secure sessions
+
+### 🚀 Production Ready
+- **Full-Stack** - FastAPI backend + Next.js 14 frontend
+- **Docker Support** - Production containers for easy deployment
+- **Cloud Ready** - Deploy to Railway, Fly.io, or any VPS
+- **MIT Licensed** - Free and open source
+
+---
+
+## 🖼️ Screenshots
+
+<div align="center">
+
+### 🔐 Secure Login
+<img src="screenshots/login.png" alt="Login Page" width="800"/>
+*Clean, minimal authentication with GitHub OAuth*
+
+<br /><br />
+
+### 📊 Dashboard Overview
+<img src="screenshots/dashboard.png" alt="Dashboard" width="800"/>
+*View your repositories, stats, and AI insights at a glance*
+
+<br /><br />
+
+### 📁 Repository Intelligence
+<img src="screenshots/repos.png" alt="Repositories" width="800"/>
+*AI-powered analysis of your codebase*
+
+<br /><br />
+
+### 🧪 API Documentation
+<img src="screenshots/api-docs.png" alt="API Docs" width="800"/>
+*Interactive API documentation with Swagger UI*
+
+</div>
+
+> **📸 Note**: Place your screenshots in a `screenshots/` folder with these filenames:
+> - `login.png` - The login page
+> - `dashboard.png` - The main dashboard
+> - `repos.png` - Repository list view
+> - `api-docs.png` - API documentation page
+
+---
+
+## 🚀 Quickstart
+
+### Prerequisites
+
+- Python 3.9+
+- Node.js 18+
+- Docker (optional)
+- GitHub OAuth App
+
+### 1. Clone the Repository
+
 ```bash
-docker compose up --build
-# Backend: http://localhost:8000
-# Frontend: http://localhost:3000
+git clone https://github.com/vxssroot/Axiom.git
+cd Axiom
 ```
 
-## Deployment
-- Railway: Backend + Frontend + Postgres
-- Fly.io: Backend (Dockerfile.backend)
-- See DEPLOY.md for full checklist
+### 2. Backend Setup
 
-## Screenshots
-Coming soon (clean dark UI with repo intelligence panels)
+```bash
+cd services/api
+pip install -r requirements.txt
+cp .env.example .env
+# Edit .env with your GitHub OAuth credentials
+python -m uvicorn app.main:app --reload
+```
 
-## License
-MIT (see LICENSE)
+### 3. Frontend Setup
 
-## Contributing
-See CONTRIBUTING.md
+```bash
+cd apps/web
+npm install
+npm run dev
+```
 
-Founder-grade. No toy features. No fake claims.
+### 4. Access the Application
+
+- **Frontend**: http://localhost:3000
+- **Backend API**: http://localhost:8000
+- **API Docs**: http://localhost:8000/docs
+
+### 5. Docker Setup (Optional)
+
+```bash
+docker compose up --build
+```
+
+---
+
+## 🏗️ Architecture
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                      Axiom Architecture                     │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  ┌─────────────┐      ┌─────────────┐      ┌───────────┐  │
+│  │   Next.js   │      │   FastAPI   │      │  Postgres │  │
+│  │  Frontend   │◄────►│   Backend   │◄────►│  Database │  │
+│  │  (Port 3000)│      │  (Port 8000)│      │           │  │
+│  └─────────────┘      └─────────────┘      └───────────┘  │
+│         │                    │                              │
+│         ▼                    ▼                              │
+│  ┌─────────────┐      ┌─────────────┐                     │
+│  │   GitHub    │      │  Qdrant/    │                     │
+│  │    OAuth    │      │  Vector DB  │                     │
+│  └─────────────┘      └─────────────┘                     │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### Components
+
+- **Frontend**: Next.js 14 with Tailwind CSS for dark, enterprise UI
+- **Backend**: FastAPI with SQLAlchemy ORM
+- **Database**: PostgreSQL for persistent storage
+- **Vector Search**: Qdrant (in-memory) for semantic code search
+- **AI Layer**: OpenAI-compatible API with safe fallback
+- **Auth**: GitHub OAuth with encrypted token storage
+
+---
+
+## 📦 Deployment
+
+### Railway
+
+```bash
+railway up
+```
+
+### Fly.io
+
+```bash
+flyctl deploy -c fly.toml
+```
+
+### Docker
+
+```bash
+docker compose up --build
+```
+
+---
+
+## 🛠️ Tech Stack
+
+| Category | Technology |
+|----------|------------|
+| Backend | FastAPI |
+| Frontend | Next.js 14 |
+| Database | PostgreSQL |
+| Vector DB | Qdrant |
+| Auth | GitHub OAuth |
+| Deployment | Docker |
+| Language | Python 3.14 |
+| Language | TypeScript |
+
+---
+
+## 📝 License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+---
+
+## 🤝 Contributing
+
+Contributions are what make the open source community such an amazing place. We welcome:
+
+- 🐛 Bug reports
+- 💡 Feature suggestions
+- 🔧 Pull requests
+- 📖 Documentation improvements
+
+See `CONTRIBUTING.md` for more details.
+
+### Contributors
+
+<a href="https://github.com/vxssroot/Axiom/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=vxssroot/Axiom" />
+</a>
+
+---
+
+## 🙏 Acknowledgments
+
+- [FastAPI](https://fastapi.tiangolo.com/) for the amazing backend framework
+- [Next.js](https://nextjs.org/) for the React framework
+- [Tailwind CSS](https://tailwindcss.com/) for styling
+- [GitHub](https://github.com/) for OAuth and API
+
+---
+
+## 📊 Project Status
+
+![Status](https://img.shields.io/badge/Status-Active-success?style=for-the-badge)
+![Development](https://img.shields.io/badge/Development-Active-brightgreen?style=for-the-badge)
+![Issues](https://img.shields.io/github/issues/vxssroot/Axiom?style=for-the-badge)
+![PRs](https://img.shields.io/github/issues-pr/vxssroot/Axiom?style=for-the-badge)
+
+---
+
+<p align="center">
+  Built with ❤️ for serious engineering workflows
+</p>
+
+<p align="center">
+  <a href="https://github.com/vxssroot/Axiom">⭐ Star on GitHub</a>
+  ·
+  <a href="https://github.com/vxssroot/Axiom/issues">Report Bug</a>
+  ·
+  <a href="https://github.com/vxssroot/Axiom/issues">Request Feature</a>
+</p>
