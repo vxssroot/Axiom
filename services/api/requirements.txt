@@ -1,3 +1,7 @@
+fastapi
+uvicorn[standard]
+pydantic
+pydantic-settings
 sqlalchemy
 psycopg2-binary
 python-jose[cryptography]
@@ -5,3 +9,12 @@ passlib[bcrypt]
 cryptography
 python-multipart
 httpx
+openai
+groq
+gitpython
+PyJWT
+requests
+python-dotenv
+aiofiles
+tiktoken
+numpy
